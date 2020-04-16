@@ -1,0 +1,17 @@
+{
+  "name": "doorstep",
+  "displayName": "doorstep",
+  "expo": {
+    "name": "doorstep",
+    "slug": "doorstep",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
