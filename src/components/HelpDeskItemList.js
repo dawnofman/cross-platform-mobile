@@ -13,38 +13,6 @@ export default class HelpDeskItemList extends React.Component{
                         </Text>
                     </View>
                 </View>
-                <View style={styles.itemContainer}>
-                    <View style={styles.textContainer}>
-                        <Text style={styles.helpText}>How can I communciate customer care?</Text>
-                        <Text style={styles.arrow}>
-                            <Icon name="chevron-right" style={styles.nextIcon} size={20} color="#ddd" />
-                        </Text>
-                    </View>
-                </View>
-                <View style={styles.itemContainer}>
-                    <View style={styles.textContainer}>
-                        <Text style={styles.helpText}>How can I communciate customer care?</Text>
-                        <Text style={styles.arrow}>
-                            <Icon name="chevron-right" style={styles.nextIcon} size={20} color="#ddd" />
-                        </Text>
-                    </View>
-                </View>
-                <View style={styles.itemContainer}>
-                    <View style={styles.textContainer}>
-                        <Text style={styles.helpText}>How can I communciate customer care?</Text>
-                        <Text style={styles.arrow}>
-                            <Icon name="chevron-right" style={styles.nextIcon} size={20} color="#ddd" />
-                        </Text>
-                    </View>
-                </View>
-                <View style={styles.itemContainer}>
-                    <View style={styles.textContainer}>
-                        <Text style={styles.helpText}>How can I communciate customer care?</Text>
-                        <Text style={styles.arrow}>
-                            <Icon name="chevron-right" style={styles.nextIcon} size={20} color="#ddd" />
-                        </Text>
-                    </View>
-                </View>
                  <View style={styles.itemContainer}>
                     <View style={styles.textContainer}>
                         <Text style={styles.helpText}>How can I communciate customer care?</Text>
@@ -88,7 +56,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     itemContainer:{
-        width:300,
+        width:'100%',
         backgroundColor:'#ffffff',
         borderWidth: 1,
         borderColor: '#ddd',

@@ -2,33 +2,46 @@ import * as React from 'react';
 import { Platform, StyleSheet,View,ScrollView} from 'react-native';
 import SearchForm from '../components/SearchForm.js';
 import CategoriesList from '../components/CategoriesList.js';
-import FooterTab1 from '../components/FooterTab1.js';
 export default class SearchCategories extends React.Component{
     state = {
             searchText: 'Search for a service',
           };
     render(){
         return (
-            <ScrollView>
-                <View style={styles.container}>
-                    <SearchForm state={this.state} />
+            <View style={styles.container}>
+                <View style={styles.searchContainer}>
+                   <SearchForm state={this.state} />
                 </View>
-                <View>
-                    <CategoriesList />
+                <View style={styles.scrollContainer}>
+                   <ScrollView>
+                        <CategoriesList />
+                   </ScrollView>
                 </View>
-                <FooterTab1 />
-            </ScrollView>
+            </View>
         )
     }
 }
 
 const styles = StyleSheet.create({
 	container: {
-        flex:1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#1ba5d8',
-        margin:0
-	},
+      flex:1,
+      alignItems: 'center',
+    },
+    footerContainer:{
+      flex:1,
+      width:'100%',
+      alignItems: 'center',
+    },
+    searchContainer:{
+      height:120,
+      backgroundColor: '#1ba5d8',
+      paddingHorizontal:10,
+      alignItems: 'flex-start',
+      height:90
+    },
+    scrollContainer:{
+      paddingBottom:30,
+      height:'75%'
+    }
 });
 

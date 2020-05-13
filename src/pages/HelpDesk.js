@@ -1,23 +1,32 @@
 import * as React from 'react';
 import { Platform, StyleSheet,View,ScrollView} from 'react-native';
 import HelpDeskItemList from '../components/HelpDeskItemList.js';
-import FooterTab1 from '../components/FooterTab1.js';
 export default class HelpDesk extends React.Component{
     render(){
         return (
-            <ScrollView>
-                <View style={styles.container}>
-                    <HelpDeskItemList />
+            <View style={styles.container}>
+                <View style={styles.scrollContainer}>
+                   <ScrollView>
+                            <HelpDeskItemList />
+                   </ScrollView>
                 </View>
-               <FooterTab1 />
-            </ScrollView>
+            </View>
         )
     }
 }
 
 const styles = StyleSheet.create({
 	container: {
-        justifyContent: 'center',
-		alignItems: 'center',
+      flex:1,
+      alignItems: 'center',
     },
+    footerContainer:{
+      flex:1,
+      width:'100%',
+      alignItems: 'center',
+    },
+    scrollContainer:{
+      paddingBottom:30,
+      height:'95%'
+    }
 });

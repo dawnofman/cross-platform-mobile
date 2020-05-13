@@ -5,136 +5,72 @@ import { Rating, AirbnbRating } from 'react-native-ratings';
 export default class ExecutiveListItem extends React.Component{
     render(){
         return (
-            <View style={styles.container}>
-            <ScrollView>
-                <View style={styles.itemContainer}>
-                    <View style={styles.imageContainer}>
-                        <Image style={styles.listImage}
-                            source={require('../img/profile-sample.jpg')}
-                        />
-                    </View>
-                    <View style={styles.textContainer}>
-                       <Text style={styles.executiveName}>Dummy Name</Text>
-                       <Text style={styles.executiveRating}>
+                <View style={styles.container}>
+                    <View style={styles.itemContainer}>
+                        <View style={styles.imageContainer}>
+                            <Image style={styles.listImage}
+                            source={require('../../assets/img/profile-sample.jpg')}
+                            />
+                        </View>
+                        <View style={styles.textContainer}>
+                            <Text style={styles.executiveName}>Dummy Name</Text>
                             <Rating
                                 imageSize={20}
                                 readonly
                                 startingValue={3}
                                 style={styles.rating}
-                              />    
-                        </Text>
+                                />    
+                        </View>
                     </View>
-                </View>
-                <View style={styles.itemContainer}>
-                    <View style={styles.imageContainer}>
-                        <Image style={styles.listImage}
-                            source={require('../img/profile-sample.jpg')}
-                        />
-                    </View>
-                    <View style={styles.textContainer}>
-                       <Text style={styles.executiveName}>Dummy Name</Text>
-                       <Text style={styles.executiveRating}>
+                                  <View style={styles.itemContainer}>
+                        <View style={styles.imageContainer}>
+                            <Image style={styles.listImage}
+                            source={require('../../assets/img/profile-sample.jpg')}
+                            />
+                        </View>
+                        <View style={styles.textContainer}>
+                            <Text style={styles.executiveName}>Dummy Name</Text>
                             <Rating
                                 imageSize={20}
                                 readonly
                                 startingValue={3}
                                 style={styles.rating}
-                              />    
-                        </Text>
+                                />    
+                        </View>
                     </View>
-                </View>
-                <View style={styles.itemContainer}>
-                    <View style={styles.imageContainer}>
-                        <Image style={styles.listImage}
-                            source={require('../img/profile-sample.jpg')}
-                        />
-                    </View>
-                    <View style={styles.textContainer}>
-                       <Text style={styles.executiveName}>Dummy Name</Text>
-                       <Text style={styles.executiveRating}>
+                                  <View style={styles.itemContainer}>
+                        <View style={styles.imageContainer}>
+                            <Image style={styles.listImage}
+                            source={require('../../assets/img/profile-sample.jpg')}
+                            />
+                        </View>
+                        <View style={styles.textContainer}>
+                            <Text style={styles.executiveName}>Dummy Name</Text>
                             <Rating
                                 imageSize={20}
                                 readonly
                                 startingValue={3}
                                 style={styles.rating}
-                              />    
-                        </Text>
+                                />    
+                        </View>
                     </View>
-                </View>
-                <View style={styles.itemContainer}>
-                    <View style={styles.imageContainer}>
-                        <Image style={styles.listImage}
-                            source={require('../img/profile-sample.jpg')}
-                        />
-                    </View>
-                    <View style={styles.textContainer}>
-                       <Text style={styles.executiveName}>Dummy Name</Text>
-                       <Text style={styles.executiveRating}>
+                                  <View style={styles.itemContainer}>
+                        <View style={styles.imageContainer}>
+                            <Image style={styles.listImage}
+                            source={require('../../assets/img/profile-sample.jpg')}
+                            />
+                        </View>
+                        <View style={styles.textContainer}>
+                            <Text style={styles.executiveName}>Dummy Name</Text>
                             <Rating
                                 imageSize={20}
                                 readonly
                                 startingValue={3}
                                 style={styles.rating}
-                              />    
-                        </Text>
+                                />    
+                        </View>
                     </View>
                 </View>
-                <View style={styles.itemContainer}>
-                    <View style={styles.imageContainer}>
-                        <Image style={styles.listImage}
-                            source={require('../img/profile-sample.jpg')}
-                        />
-                    </View>
-                    <View style={styles.textContainer}>
-                       <Text style={styles.executiveName}>Dummy Name</Text>
-                       <Text style={styles.executiveRating}>
-                            <Rating
-                                imageSize={20}
-                                readonly
-                                startingValue={3}
-                                style={styles.rating}
-                              />    
-                        </Text>
-                    </View>
-                </View>
-                <View style={styles.itemContainer}>
-                    <View style={styles.imageContainer}>
-                        <Image style={styles.listImage}
-                            source={require('../img/profile-sample.jpg')}
-                        />
-                    </View>
-                    <View style={styles.textContainer}>
-                       <Text style={styles.executiveName}>Dummy Name</Text>
-                       <Text style={styles.executiveRating}>
-                            <Rating
-                                imageSize={20}
-                                readonly
-                                startingValue={3}
-                                style={styles.rating}
-                              />    
-                        </Text>
-                    </View>
-                </View>
-                <View style={styles.itemContainer}>
-                    <View style={styles.imageContainer}>
-                        <Image style={styles.listImage}
-                            source={require('../img/profile-sample.jpg')}
-                        />
-                    </View>
-                    <View style={styles.textContainer}>
-                       <Text style={styles.executiveName}>Dummy Name</Text>
-                       <Text style={styles.executiveRating}>
-                            <Rating
-                                imageSize={20}
-                                readonly
-                                startingValue={3}
-                                style={styles.rating}
-                              />    
-                        </Text>
-                    </View>
-                </View>
-                </ScrollView>
-            </View>
         );
     }
 }
@@ -143,11 +79,12 @@ const styles = StyleSheet.create({
 		flexGrow: 1,
         justifyContent: 'center',
 		alignItems: 'center',
-	},
+    },
     itemContainer:{
         flexDirection:'row',
-        width:300,
+        width:'100%',
         alignItems:'flex-start',
+        height:80,
         marginVertical:2,
         backgroundColor:'#ffffff',
         borderWidth: 1,
@@ -160,15 +97,17 @@ const styles = StyleSheet.create({
         elevation: 1,
     },
     listImage:{
-        height:70,
-        width:70,
+        height:75,
+        width:75,
+        margin:2
     },
     imageContainer:{
-        
-        
+       width:'20%' 
     },
     textContainer:{
-        
+        width:'80%',
+        justifyContent: 'flex-start',
+		alignItems: 'flex-start',
     },
     executiveName:{
         fontSize:20,
@@ -179,7 +118,7 @@ const styles = StyleSheet.create({
         paddingHorizontal :10
     },
     rating:{
-        
+        paddingHorizontal:10
     }
     
 });
