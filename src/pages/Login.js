@@ -1,14 +1,16 @@
 import * as React from 'react';
 import { Platform, Button, StyleSheet, Text, View, StatusBar, TextInput } from 'react-native';
+//import AuthContext from '../context.js';
 import Logo from '../components/Logo.js';
 import LoginForm from '../components/LoginForm.js';
 
 export default class Login extends React.Component{
     render(){
+        const AuthContext = React.createContext();
         return (
             <View style={styles.container}>
                 <Logo/>
-                <LoginForm navigation={this.props.navigation} />
+                <LoginForm navigation={this.props.navigation} context={AuthContext} />
                 <View style={styles.signupTextCont}>
                     <Text style={styles.signupText}>Don't have an account yet? </Text>
                     <Text style={styles.signupLink}

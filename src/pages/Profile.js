@@ -32,14 +32,9 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       backgroundColor:'#fff',
    },
-   footerContainer:{
-      flex:1,
-      width:'100%',
-      alignItems: 'center',
-   },
    scrollContainer:{
       paddingBottom:30,
-      height:'95%',
+      //height:'95%',
       alignItems: 'center',
    },
 	content:{

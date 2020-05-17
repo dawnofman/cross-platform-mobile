@@ -15,7 +15,7 @@ export default class Signup extends React.Component{
             <ScrollView>
             <View style={styles.container}>
                 <Logo/>
-                <SignupForm navigation={this.props.navigation} state={this.state}  />
+                <SignupForm navigation={this.props.navigation} isShow={this.state}  />
                 <View style={styles.signupTextCont}>
                     <Text style={styles.signupText}>Already have an account? </Text>
                     <Text style={styles.signupLink}  title="Login"

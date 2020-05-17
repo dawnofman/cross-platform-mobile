@@ -13,72 +13,49 @@ export default class CommentList extends React.Component{
                     </View>
                     <View style={styles.itemContainer}>
                         <View style={styles.textContainer}>
-                            <Text style={styles.commentText}>Best service ever I have seen..</Text>
-                            <Text style={styles.executiveRating}>
-                                <Rating
-                                imageSize={15}
-                                readonly
-                                startingValue={3}
-                                style={styles.rating}
-                                />
+                            <View>
+                                <Text style={styles.commentText}>Best service ever I have seen..</Text>
+                            </View>
+                           
+                            <View>
                                 <Text style={styles.author}>by Stephen johnson</Text>
-                            </Text>
+                            </View>
                         </View>
-                    </View>
-                    <View style={styles.itemContainer}>
-                        <View style={styles.textContainer}>
-                            <Text style={styles.commentText}>Best service ever I have seen..</Text>
-                            <Text style={styles.executiveRating}>
-                                <Rating
-                                imageSize={15}
-                                readonly
-                                startingValue={3}
-                                style={styles.rating}
-                                />
+                         <View style={styles.textContainer}>
+                            <View>
+                                <Text style={styles.commentText}>Best service ever I have seen..</Text>
+                            </View>
+                           
+                            <View>
                                 <Text style={styles.author}>by Stephen johnson</Text>
-                            </Text>
+                            </View>
                         </View>
-                    </View>
-                    <View style={styles.itemContainer}>
-                        <View style={styles.textContainer}>
-                            <Text style={styles.commentText}>Best service ever I have seen..</Text>
-                            <Text style={styles.executiveRating}>
-                                <Rating
-                                imageSize={15}
-                                readonly
-                                startingValue={3}
-                                style={styles.rating}
-                                />
+                         <View style={styles.textContainer}>
+                            <View>
+                                <Text style={styles.commentText}>Best service ever I have seen..</Text>
+                            </View>
+                           
+                            <View>
                                 <Text style={styles.author}>by Stephen johnson</Text>
-                            </Text>
+                            </View>
                         </View>
-                    </View>
-                    <View style={styles.itemContainer}>
                         <View style={styles.textContainer}>
-                            <Text style={styles.commentText}>Best service ever I have seen..</Text>
-                            <Text style={styles.executiveRating}>
-                                <Rating
-                                imageSize={15}
-                                readonly
-                                startingValue={3}
-                                style={styles.rating}
-                                />
+                            <View>
+                                <Text style={styles.commentText}>Best service ever I have seen..</Text>
+                            </View>
+                           
+                            <View>
                                 <Text style={styles.author}>by Stephen johnson</Text>
-                            </Text>
+                            </View>
                         </View>
-                    </View>
-                    <View style={styles.itemContainer}>
                         <View style={styles.textContainer}>
-                            <Text style={styles.commentText}>Best service ever I have seen..</Text>
-                            <Text style={styles.executiveRating}>
-                                <Rating
-                                imageSize={15}
-                                readonly
-                                startingValue={3}
-                                style={styles.rating}
-                                />
+                            <View>
+                                <Text style={styles.commentText}>Best service ever I have seen..</Text>
+                            </View>
+                           
+                            <View>
                                 <Text style={styles.author}>by Stephen johnson</Text>
-                            </Text>
+                            </View>
                         </View>
                     </View>
                 </View>
@@ -90,10 +67,10 @@ const styles = StyleSheet.create({
         flexGrow: 1,
         justifyContent: 'flex-end',
         alignItems: 'center',
+        width:'100%'
     },
     itemContainer:{
-        flexDirection:'row',
-        width:300,
+        width:'100%',
         alignItems:'flex-start',
         backgroundColor:'#ffffff',
         borderWidth: 1,

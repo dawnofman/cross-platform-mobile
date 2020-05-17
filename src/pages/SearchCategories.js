@@ -2,10 +2,12 @@ import * as React from 'react';
 import { Platform, StyleSheet,View,ScrollView} from 'react-native';
 import SearchForm from '../components/SearchForm.js';
 import CategoriesList from '../components/CategoriesList.js';
+
 export default class SearchCategories extends React.Component{
     state = {
             searchText: 'Search for a service',
           };
+
     render(){
         return (
             <View style={styles.container}>
@@ -14,7 +16,7 @@ export default class SearchCategories extends React.Component{
                 </View>
                 <View style={styles.scrollContainer}>
                    <ScrollView>
-                        <CategoriesList />
+                        <CategoriesList navigation={this.props.navigation} />
                    </ScrollView>
                 </View>
             </View>

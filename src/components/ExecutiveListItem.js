@@ -1,76 +1,137 @@
 import * as React from 'react';
-import { Platform,StyleSheet,View,Image,Text,ScrollView} from 'react-native';
+import { Platform,StyleSheet,View,Image,Text,ScrollView,TouchableOpacity} from 'react-native';
 import { Rating, AirbnbRating } from 'react-native-ratings';
+import * as Constants from '../constants';
 
 export default class ExecutiveListItem extends React.Component{
+    constructor(props) {
+        super(props);
+        
+         
+    }
+       componentWillMount(){
+           fetch(Constants.POST_URL+'account_setup/service_user_list',{
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({'service_id':this.props.state.service})
+        }).then(function (response) {
+            return response.json();
+        }).then(function (result) {
+            console.log(result) ;
+            if(result.response_code == '200' && result.response_msg =='success'){
+               // login();
+            }else{
+                alert(
+                    'Login failed',
+                    result.response_msg,
+                )
+
+            }
+        }).catch(function (error) {
+            console.log("-------- error ------- "+error);
+            alert("result:"+error)
+        });
+    }
+
     render(){
         return (
+            
                 <View style={styles.container}>
-                    <View style={styles.itemContainer}>
-                        <View style={styles.imageContainer}>
-                            <Image style={styles.listImage}
-                            source={require('../../assets/img/profile-sample.jpg')}
-                            />
-                        </View>
-                        <View style={styles.textContainer}>
-                            <Text style={styles.executiveName}>Dummy Name</Text>
-                            <Rating
-                                imageSize={20}
-                                readonly
-                                startingValue={3}
-                                style={styles.rating}
-                                />    
-                        </View>
-                    </View>
-                                  <View style={styles.itemContainer}>
-                        <View style={styles.imageContainer}>
-                            <Image style={styles.listImage}
-                            source={require('../../assets/img/profile-sample.jpg')}
-                            />
-                        </View>
-                        <View style={styles.textContainer}>
-                            <Text style={styles.executiveName}>Dummy Name</Text>
-                            <Rating
-                                imageSize={20}
-                                readonly
-                                startingValue={3}
-                                style={styles.rating}
-                                />    
-                        </View>
-                    </View>
-                                  <View style={styles.itemContainer}>
-                        <View style={styles.imageContainer}>
-                            <Image style={styles.listImage}
-                            source={require('../../assets/img/profile-sample.jpg')}
-                            />
-                        </View>
-                        <View style={styles.textContainer}>
-                            <Text style={styles.executiveName}>Dummy Name</Text>
-                            <Rating
-                                imageSize={20}
-                                readonly
-                                startingValue={3}
-                                style={styles.rating}
-                                />    
-                        </View>
-                    </View>
-                                  <View style={styles.itemContainer}>
-                        <View style={styles.imageContainer}>
-                            <Image style={styles.listImage}
-                            source={require('../../assets/img/profile-sample.jpg')}
-                            />
-                        </View>
-                        <View style={styles.textContainer}>
-                            <Text style={styles.executiveName}>Dummy Name</Text>
-                            <Rating
-                                imageSize={20}
-                                readonly
-                                startingValue={3}
-                                style={styles.rating}
-                                />    
-                        </View>
-                    </View>
-                </View>
+                   <TouchableOpacity onPress={() => this.props.navigation.navigate('ExecutiveProfile',{'user_id':'1'})} > 
+                        <View style={styles.itemContainer}>
+                            <View style={styles.imageContainer}>
+                                <Image style={styles.listImage}
+                                source={require('../../assets/img/profile-sample.jpg')}
+                                />
+                            </View>
+                            <View style={styles.textContainer}>
+                                <Text style={styles.executiveName}>Dummy Name{this.props.state.service}</Text>
+                                <Rating
+                                    imageSize={20}
+                                    readonly
+                                    startingValue={3}
+                                    style={styles.rating}
+                                    />    
+                            </View>
+                         </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('ExecutiveProfile')} > 
+                        <View style={styles.itemContainer}>
+                            <View style={styles.imageContainer}>
+                                <Image style={styles.listImage}
+                                source={require('../../assets/img/profile-sample.jpg')}
+                                />
+                            </View>
+                            <View style={styles.textContainer}>
+                                <Text style={styles.executiveName}>Dummy Name</Text>
+                                <Rating
+                                    imageSize={20}
+                                    readonly
+                                    startingValue={3}
+                                    style={styles.rating}
+                                    />    
+                            </View>
+                         </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('ExecutiveProfile')} > 
+                        <View style={styles.itemContainer}>
+                            <View style={styles.imageContainer}>
+                                <Image style={styles.listImage}
+                                source={require('../../assets/img/profile-sample.jpg')}
+                                />
+                            </View>
+                            <View style={styles.textContainer}>
+                                <Text style={styles.executiveName}>Dummy Name</Text>
+                                <Rating
+                                    imageSize={20}
+                                    readonly
+                                    startingValue={3}
+                                    style={styles.rating}
+                                    />    
+                            </View>
+                         </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('ExecutiveProfile')} > 
+                        <View style={styles.itemContainer}>
+                            <View style={styles.imageContainer}>
+                                <Image style={styles.listImage}
+                                source={require('../../assets/img/profile-sample.jpg')}
+                                />
+                            </View>
+                            <View style={styles.textContainer}>
+                                <Text style={styles.executiveName}>Dummy Name</Text>
+                                <Rating
+                                    imageSize={20}
+                                    readonly
+                                    startingValue={3}
+                                    style={styles.rating}
+                                    />    
+                            </View>
+                         </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('ExecutiveProfile')} > 
+                        <View style={styles.itemContainer}>
+                            <View style={styles.imageContainer}>
+                                <Image style={styles.listImage}
+                                source={require('../../assets/img/profile-sample.jpg')}
+                                />
+                            </View>
+                            <View style={styles.textContainer}>
+                                <Text style={styles.executiveName}>Dummy Name</Text>
+                                <Rating
+                                    imageSize={20}
+                                    readonly
+                                    startingValue={3}
+                                    style={styles.rating}
+                                    />    
+                            </View>
+                         </View>
+                    </TouchableOpacity>
+            </View>
+                
         );
     }
 }

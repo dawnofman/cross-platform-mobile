@@ -1,21 +1,69 @@
 import * as React from 'react';
 import { Platform, Button, StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import * as Constants from '../constants';
+
 export default class LoginForm extends React.Component{
+
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+          username: '',
+          password: '',
+        };
+    }
+     
+    submit(){
+
+       const {login} =React.useContext(this.props.context);
+        var nav = this.props.navigation;
+        console.log(JSON.stringify(this.state));
+        console.log(Constants.POST_URL+'account_setup/validate_login');
+        fetch(Constants.POST_URL+'account_setup/validate_login',{
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(this.state)
+        }).then(function (response) {
+            return response.json();
+        }).then(function (result) {
+            console.log(result) ;
+            if(result.response_code == '200' && result.response_msg =='success'){
+                login();
+            }else{
+                alert(
+                    'Login failed',
+                    result.response_msg,
+                )
+
+            }
+        }).catch(function (error) {
+            console.log("-------- error ------- "+error);
+            alert("result:"+error)
+        });
+    }
     render(){
+
         return (
              <View style={styles.container}>
                 <TextInput style ={styles.inputBox}
+                    value={this.state.username}
                     placeholder='Email Id or User Name'
                     autoCorrect ={false}
+                    onChangeText={(username) => this.setState({ username })}
                 />
                 <TextInput style ={styles.inputBox}
                     placeholder= 'Password'
                     autoCorrect ={false}
                     secureTextEntry = {true}
+                    value={this.state.password}
+                    onChangeText={(password) => this.setState({ password })}
                 />
                 <TouchableOpacity
                     style={styles.button}
-                    onPress={() =>this.props.navigation.navigate('Home')} >
+                     onPress={() =>this.submit()} >
                     <Text style={styles.buttonText}>Login</Text>
                 </TouchableOpacity>
             </View>
