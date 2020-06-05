@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { Platform, Button, StyleSheet, Text, View, TextInput, TouchableOpacity, CheckBox, Alert } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import * as Constants from '../constants';
+import { CheckBox } from 'react-native-elements';
 import * as RootNavigation from "../../RootNavigation";
 
 export default class SignupForm extends React.Component {
@@ -14,6 +16,7 @@ export default class SignupForm extends React.Component {
             address: "",
             password: '',
             id: "",
+            checked: false
         };
     }
 
@@ -63,7 +66,8 @@ export default class SignupForm extends React.Component {
     }
 
     updateData() {
-        var nav = this.props.navigation;
+        //  const { updateUserData} = this.props;
+        let nav = this.props.navigation;
         fetch(Constants.POST_URL + 'account_setup/update_profile', {
             method: 'POST',
             headers: {
@@ -76,6 +80,7 @@ export default class SignupForm extends React.Component {
         }).then((result) => {
             console.log(result);
             if (result.response_code === 200 && result.response_msg == 'success') {
+                //    updateUserData(this.state.address);
                 alert('Updated Successfully');
             } else {
                 alert('Updation failed');
@@ -86,58 +91,65 @@ export default class SignupForm extends React.Component {
         });
     }
     render() {
-       // const {buttonText } = this.state;
+        // const {buttonText } = this.state;
         const { isShow } = this.props;
         return (
-            <View style={styles.container}>
-                <View style={styles.nameContainer}>
-                    <TextInput style={styles.inputBoxName}
-                        placeholder='First Name'
-                        onChangeText={(firstname) => this.setState({ firstname })}
-                        defaultValue={this.state.firstname}
-                    />
-                    <TextInput style={styles.inputBoxName}
-                        placeholder='Last Name'
-                        onChangeText={(lastname) => this.setState({ lastname })}
-                        defaultValue={this.state.lastname}
-                    />
-                </View>
-                <TextInput style={styles.inputBox}
-                    placeholder='Mobile no'
-                    onChangeText={(mobileno) => this.setState({ mobileno })}
-                    defaultValue={this.state.mobileno}
-                />
-                <TextInput style={styles.inputBox}
-                    placeholder='Email Id'
-                    onChangeText={(emailId) => this.setState({ emailId })}
-                    defaultValue={this.state.emailId}
-                />
-                <TextInput style={styles.textArea}
-                    placeholder='Address'
-                    onChangeText={(address) => this.setState({ address })}
-                    defaultValue={this.state.address}
-                />
-                {isShow ? (
-                    <TextInput style={styles.inputBox}
-                        placeholder='Password'
-                        secureTextEntry={true}
-                        onChangeText={(password) => this.setState({ password })}
-                    />
-                ) : (false)}
-                {isShow ? (
+            <KeyboardAwareScrollView>
+                <View style={styles.container}>
                     <View style={styles.nameContainer}>
-                        <CheckBox style={styles.constentCheckBox} title='I agree with the Terms & Conditions' />
-                        <Text style={styles.constentText}> I agree with the Terms & Conditions</Text>
-                    </View>) : (false)}
+                        <TextInput style={styles.inputBoxName}
+                            placeholder='First Name'
+                            onChangeText={(firstname) => this.setState({ firstname })}
+                            defaultValue={this.state.firstname}
+                        />
+                        <TextInput style={styles.inputBoxName}
+                            placeholder='Last Name'
+                            onChangeText={(lastname) => this.setState({ lastname })}
+                            defaultValue={this.state.lastname}
+                        />
+                    </View>
+                    <TextInput style={styles.inputBox}
+                        placeholder='Mobile no'
+                        onChangeText={(mobileno) => this.setState({ mobileno })}
+                        defaultValue={this.state.mobileno}
+                    />
+                    <TextInput style={styles.inputBox}
+                        placeholder='Email Id'
+                        onChangeText={(emailId) => this.setState({ emailId })}
+                        defaultValue={this.state.emailId}
+                    />
+                    <TextInput style={styles.textArea}
+                        placeholder='Address'
+                        onChangeText={(address) => this.setState({ address })}
+                        defaultValue={this.state.address}
+                    />
+                    {isShow ? (
+                        <TextInput style={styles.inputBox}
+                            placeholder='Password'
+                            secureTextEntry={true}
+                            onChangeText={(password) => this.setState({ password })}
+                        />
+                    ) : (false)}
+                    {isShow ? (
+                        <View style={styles.nameContainer}>
+                            <CheckBox
+                                title=' I agree with the Terms & Conditions'
+                                checkedColor='red'
+                                checkedColor='#1ba5d8'
+                                checked={this.state.checked}
+                                onPress={() => this.setState({ checked: !this.state.checked })}
+                            />
+                        </View>) : (false)}
 
-                <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => { isShow ? (this.submit()) : (this.updateData()) }}
-                >
-                    <Text style={styles.buttonText}>{isShow ? ('Signup'):('Update Profile')}</Text>
-                </TouchableOpacity>
+                    <TouchableOpacity
+                        style={styles.button}
+                        onPress={() => { isShow ? (this.submit()) : (this.updateData()) }}
+                    >
+                        <Text style={styles.buttonText}>{isShow ? ('Signup') : ('Update Profile')}</Text>
+                    </TouchableOpacity>
 
-            </View>
+                </View>
+            </KeyboardAwareScrollView>
         )
     }
 }
@@ -186,16 +198,20 @@ const styles = StyleSheet.create({
         color: '#ffffff',
     },
     nameContainer: {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+        justifyContent: 'flex-start',
     },
     constentCheckBox: {
-        marginTop: 5,
+        //  marginTop: 5,
+        margin: 0,
+        //  padding:0
     },
     constentText: {
         fontSize: 16,
         color: '#1ba5d8',
-        marginLeft: 5,
-        marginTop: 10
+        //  marginLeft: -20,
+        marginTop: 15
     },
     textArea: {
         width: 300,

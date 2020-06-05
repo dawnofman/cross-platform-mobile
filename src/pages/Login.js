@@ -13,20 +13,23 @@ export default class Login extends React.Component {
     }
 
     render() {
-        const {onLoginStateChange, getUserData} = this.props;
+        const { onLoginStateChange, getUserData } = this.props;
 
-        const AuthContext = React.createContext();
         return (
-            <View style={styles.container}>
-                <Logo/>
-                <LoginForm onLoginStateChange={onLoginStateChange()} getUserData={getUserData()}/>
-                <View style={styles.signupTextCont}>
-                    <Text style={styles.signupText}>Don't have an account yet? </Text>
+            <View style={styles.container} >
+                <Logo />
+                <LoginForm onLoginStateChange={onLoginStateChange()}
+                    getUserData={getUserData()}
+                />
+                <View style={styles.signupTextCont} >
+                    <Text style={styles.signupText} > Don't have an account yet? </Text>
                     <Text style={styles.signupLink}
-                          title="Signup"
-                        onPress={() => RootNavigation.navigate('Signup')}>
+                        title="Signup"
+                        onPress={
+                            () => RootNavigation.navigate('Signup')
+                        } >
                         Signup
-                    </Text>
+            </Text>
                 </View>
             </View>
         )

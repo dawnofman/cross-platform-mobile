@@ -25,6 +25,7 @@
     "react-native-gesture-handler": "^1.6.1",
     "react-native-google-places-autocomplete": "^1.6.1",
     "react-native-image-gallery": "^2.1.5",
+    "react-native-keyboard-aware-scroll-view": "^0.9.1",
     "react-native-modal-datetime-picker": "^8.6.0",
     "react-native-ratings": "^6.5.0",
     "react-native-reanimated": "^1.7.1",

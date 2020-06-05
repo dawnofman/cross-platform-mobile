@@ -1,5 +1,6 @@
 import * as React from 'react';
-import {Platform, Button, StyleSheet, Text, View, TextInput, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import * as Constants from '../constants';
 
 export default class LoginForm extends React.Component {
@@ -12,7 +13,7 @@ export default class LoginForm extends React.Component {
         };
     }
     submit() {
-        const {onLoginStateChange, getUserData} = this.props;
+        const { onLoginStateChange, getUserData } = this.props;
         fetch(Constants.POST_URL + 'account_setup/validate_login', {
             method: 'POST',
             headers: {
@@ -28,6 +29,7 @@ export default class LoginForm extends React.Component {
             } else {
                 onLoginStateChange(true);
                 getUserData(result.user_data);
+
             }
         }).catch(function (error) {
             console.log("-------- error ------- " + error);
@@ -37,26 +39,28 @@ export default class LoginForm extends React.Component {
 
     render() {
         return (
-            <View style={styles.container}>
-                <TextInput style={styles.inputBox}
-                           value={this.state.username}
-                           placeholder='Email Id or User Name'
-                           autoCorrect={false}
-                           onChangeText={(username) => this.setState({username})}
-                />
-                <TextInput style={styles.inputBox}
-                           placeholder='Password'
-                           autoCorrect={false}
-                           secureTextEntry={true}
-                           value={this.state.password}
-                           onChangeText={(password) => this.setState({password})}
-                />
-                <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => this.submit()}>
-                    <Text style={styles.buttonText}>Login</Text>
-                </TouchableOpacity>
-            </View>
+            <KeyboardAwareScrollView>
+                <View style={styles.container}>
+                    <TextInput style={styles.inputBox}
+                        value={this.state.username}
+                        placeholder='Email Id or User Name'
+                        autoCorrect={false}
+                        onChangeText={(username) => this.setState({ username })}
+                    />
+                    <TextInput style={styles.inputBox}
+                        placeholder='Password'
+                        autoCorrect={false}
+                        secureTextEntry={true}
+                        value={this.state.password}
+                        onChangeText={(password) => this.setState({ password })}
+                    />
+                    <TouchableOpacity
+                        style={styles.button}
+                        onPress={() => this.submit()}>
+                        <Text style={styles.buttonText}>Login</Text>
+                    </TouchableOpacity>
+                </View>
+            </KeyboardAwareScrollView >
         )
     }
 }

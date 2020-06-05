@@ -5,7 +5,7 @@ export default class ProfilePicture extends React.Component{
     render(){
         return (
             <Image style={styles.profilePic}
-                 source={require('../../assets/img/profile-sample.jpg')}
+                 source={require('../../assets/img/profile-image.png')}
              />
         );
     }

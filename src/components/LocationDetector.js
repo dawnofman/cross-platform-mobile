@@ -14,6 +14,7 @@ export default class LocationDetector extends React.Component {
     
     };
     this.onChangeText = this.onChangeText.bind(this);
+    this.addAddress = this.addAddress.bind(this);
   }
 
   onChangeText = (input) => {
@@ -22,6 +23,7 @@ export default class LocationDetector extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { input } = this.state;
+    
     let key = 'AIzaSyAKBxvnKG2dKk9FOEgB5k15E-G4V5FtIUk';
     if (prevState.input !== input && input.length > 2) {
       fetch('https://maps.googleapis.com/maps/api/place/autocomplete/json?input=' + input + '&key=' + key, {
@@ -34,8 +36,8 @@ export default class LocationDetector extends React.Component {
         return response.json();
       }).then((result) => {
         console.log(result);
-      //  if (result.status === "OK") {
-          result.predictions =["Hagenberg","Linz","Salzburg"];
+       // if (result.status === "OK") {
+         // result.predictions =["Hagenberg","Linz","Salzburg"];
           this.setState({ dataExist: true });
           this.setState({ dataSource: result.predictions });
        /* } else {
@@ -45,11 +47,12 @@ export default class LocationDetector extends React.Component {
     }
   }
   addAddress = (data) => {
-   alert(data);
-//    this.props.navigation.state.params.onGoBack();
-    this.props.navigation.goBack();
-    this.props.route.params.changeAddress({address:data});
-    //this.props.navigation.navigate.goBack();
+    const { updateUserData } = this.props;
+    //console.log("Testinggggggg---" + onLoginStateChange);
+    updateUserData(data);
+  //  this.props.route.params.changeAddress("123");
+    RootNavigation.navigate('Home') 
+ ///   this.props.navigation.goBack();
   }
 
   render() {
@@ -76,7 +79,7 @@ export default class LocationDetector extends React.Component {
                   chevron={false}
                   topDivider={true}
                   bottomDivider={true}
-                  onPress={() => { this.addAddress('testeinf') }}
+                  onPress={() => { this.addAddress(data.description) }}
                 />
               ))
             }

@@ -11,22 +11,22 @@ export default class ExecutiveListItem extends React.Component {
         super(props);
         this.state = {
             isDataAvailable: false,
-            userId:null,
-            serviceId: null, 
-            userData:[],
-            address:null
+            userId: null,
+            serviceId: null,
+            userData: [],
+            address: null
         }
     }
 
     componentDidMount() {
-        const { serviceId,userId,address } = this.props.state;
-        this.setState({ serviceId: serviceId, userId: userId, address: address});
+        const { serviceId, userId, address } = this.props.state;
+        this.setState({ serviceId: serviceId, userId: userId, address: address });
         //console.log("ListParam" + serviceId + '==' + userId + "=" + address);
         this.fetchData(serviceId);
     }
-    fetchData = (serviceId)=>{
+    fetchData = (serviceId) => {
         const { isDataAvailable } = this.state;
-        console.log("listSer--"+serviceId)
+        console.log("listSer--" + serviceId)
         fetch(Constants.POST_URL + 'account_setup/service_user_list', {
             method: 'POST',
             headers: {
@@ -53,6 +53,7 @@ export default class ExecutiveListItem extends React.Component {
 
     render() {
         const { isDataAvailable, userId, serviceId, address, userData } = this.state;
+        const { navigation } = this.props;
         return (
             <View style={styles.container}>
                 {isDataAvailable ?
@@ -67,7 +68,7 @@ export default class ExecutiveListItem extends React.Component {
                                     topDivider={true}
                                     bottomDivider={true}
                                     booking_item_detail
-                                    onPress={() => RootNavigation.navigate('ExecutiveProfile', { clientId: userId, executiveId: data.users_id, serviceId: serviceId, address: address})}
+                                    onPress={() => RootNavigation.navigate('ExecutiveProfile', { clientId: userId, executiveId: data.users_id, serviceId: serviceId, address: address, navigation: navigation })}
                                 />
                             ))
                         }
@@ -82,10 +83,10 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
-    noDataAvails:{
-        flexGrow:1,
-        padding:20,
-        width:'100%',
+    noDataAvails: {
+        flexGrow: 1,
+        padding: 20,
+        width: '100%',
 
     }
 

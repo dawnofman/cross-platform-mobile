@@ -25,7 +25,7 @@ export const TabNavigator = (props) => {
                                height: 50,
                            },
                        }}>
-            <Tab.Screen name="Home" component={() => <HomeStackScreen userData={props.userData}/>}
+            <Tab.Screen name="Home" component={() => <HomeStackScreen userData={props.userData} userAddress={props.userAddress} updateUserData={() => props.updateUserData()} />}
                         options={{
                             tabBarLabel: 'Home',
                             tabBarIcon: ({color, size}) => (
@@ -33,7 +33,7 @@ export const TabNavigator = (props) => {
                             ),
                         }}
             />
-            <Tab.Screen name="Search" component={() => <SearchCategoriesStackScreen userData={props.userData}/> }
+            <Tab.Screen name="Search" component={() => <SearchCategoriesStackScreen userData={props.userData} userAddress={props.userAddress} /> }
                         options={{
                             tabBarLabel: 'Search',
                             tabBarIcon: ({color, size}) => (
@@ -57,7 +57,7 @@ export const TabNavigator = (props) => {
                             ),
                         }}
             />
-            <Tab.Screen name="Setting" component={() => <ProfileStackScreen userData={props.userData}/>}
+            <Tab.Screen name="Setting" component={() => <ProfileStackScreen onLoginStateChange={() => props.onLoginStateChange()} userData={props.userData} />}
                         options={{
                             tabBarLabel: 'Settings',
                             tabBarIcon: ({color, size}) => (

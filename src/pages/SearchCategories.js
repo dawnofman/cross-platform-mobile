@@ -18,14 +18,16 @@ export default class SearchCategories extends React.Component {
     //    console.log(userData);
   }
   render() {
+    const { userAddress } = this.props;
+    console.log("secg"+userAddress);
     return (
       <View style={styles.container}>
         <View style={styles.searchContainer}>
-          <SearchForm state={this.state} />
+          <SearchForm state={this.state} userAddress={userAddress}  />
         </View>
         <View style={styles.scrollContainer}>
           <ScrollView>
-            <CategoriesList state={this.state} />
+            <CategoriesList state={this.state} userAddress={userAddress}  />
           </ScrollView>
         </View>
       </View>
@@ -44,11 +46,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   searchContainer: {
-    height: 120,
     backgroundColor: '#1ba5d8',
     paddingHorizontal: 10,
     alignItems: 'flex-start',
-    height: 90
+    //height: 90
   },
   scrollContainer: {
     paddingBottom: 30,

@@ -5,9 +5,9 @@ import {TabNavigator} from "./src/components/TabNavigator";
 import {navigationRef} from "./RootNavigation";
 
 export default class App extends React.Component{
-    if (__DEV__) {
+    /*if (__DEV__) {
         import('./reactotronConfig').then(() => console.log('Reactotron Configured'))   //Rectotron import
-    }
+    }*/
 
     constructor(props) {
         super(props);
@@ -15,24 +15,29 @@ export default class App extends React.Component{
         this.state = {
             isLoggedIn: false,
             userData: [],
+            userAddress:null
         };
         console.disableYellowBox = true;
     }
 
     onLoginStateChange = (state) => {
         this.setState({isLoggedIn: state});
+        console.log("login status:"+state);
     };
 
     getUserData = (data) => {
         this.setState({userData: data});
+        this.setState({ userAddress: data.address });
     };
-
+    updateUserData=(data)=>{
+        this.setState({ userAddress: data });
+    }
 
     render() {
-        const {isLoggedIn, userData} = this.state;
+        const { isLoggedIn, userData, userAddress} = this.state;
         return (
             <NavigationContainer ref={navigationRef}>
-                {isLoggedIn ? <TabNavigator userData={userData}/> : <StackNavigator getUserData={() => this.getUserData}
+                {isLoggedIn ? <TabNavigator initialRouteName ="Home" userData={userData} userAddress={userAddress}  onLoginStateChange={() => this.onLoginStateChange} updateUserData={() => this.updateUserData}  /> : <StackNavigator getUserData={() => this.getUserData}
                                                                                     onLoginStateChange={() => this.onLoginStateChange}/>}
             </NavigationContainer>
         );

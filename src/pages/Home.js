@@ -5,6 +5,7 @@ import BannerSlider from '../components/BannerSlider.js';
 import SearchForm from '../components/SearchForm.js';
 import CategoriesList from '../components/CategoriesList.js';
 import NotificationBanner from '../components/NotificationBanner.js';
+import LoadingScreen from '../components/LoadingScreen.js';
 import * as RootNavigation from "../../RootNavigation";
 export default class Home extends React.Component {
 
@@ -14,40 +15,55 @@ export default class Home extends React.Component {
     this.state = {
       searchText: 'Search for a service',
       address: null,
-      userId: null
+      userId: null,
+      updateAddress: null,
+      isLoading: true,
+      userAddress:null
     };
+   // this.changeAddress = this.changeAddress.bind(this);
   }
   componentWillMount() {
-    const { userData } = this.props;
-    this.setState({ address: userData.address, userId: userData.users_id });
-    
-    //    console.log(userData);
+    const { userData, userAddress } = this.props;
+    this.setState({ address: userAddress, userId: userData.users_id });
+    setTimeout(() => {
+      this.setState({
+        isLoading: false,
+      });
+    }, 2500);
   }
+  
+  /*
   changeAddress = (updateAddress) => {
-    this.setState({ address: updateAddress });
+    console.log("gg--" + updateAddress);
+    this.setState({ address: updateAddress }, ()=> {alert (address)});
   }
-
+*/
 
   render() {
-    const { address } = this.state;
-    console.log("state---" + this.state.address + "-" + this.state.userId);
+    const { address, updateAddress, isLoading } = this.state;
+    const { userAddress}= this.props
+    //alert("render--"+updateAddress);
+    //console.log("state---" + this.state.address + "-" + this.state.updateAddress);
     return (
       <View style={styles.container}>
+        {isLoading ? (
+          <LoadingScreen />
+        ) : (false)}
         <View style={styles.searchContainer}>
           <View style={styles.locationContainer} >
-            <Icon style={styles.locationIcon} name="location-on" size={20} onPress={() => RootNavigation.navigate('LocationDetector', { changeAddress: this.changeAddress })} />
+            <Icon style={styles.locationIcon} name="location-on" size={20} onPress={() => RootNavigation.navigate('LocationDetector')} />
             <Text style={styles.locationText} numberOfLines={1}>
               {address}
             </Text>
           </View>
-          <SearchForm state={this.state} />
+          <SearchForm state={this.state} userAddress={userAddress} />
         </View>
         <View style={styles.scrollContainer}>
           <ScrollView>
             <View style={styles.sliderContainer}>
               <BannerSlider />
             </View>
-            <CategoriesList state={this.state} />
+            <CategoriesList state={this.state} userAddress={userAddress}/>
             <NotificationBanner />
           </ScrollView>
         </View>

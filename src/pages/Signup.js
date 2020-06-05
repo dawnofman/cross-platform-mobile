@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Platform, Button, StyleSheet, Text, View, StatusBar, TextInput, ScrollView } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import {  StyleSheet, Text, View, ScrollView } from 'react-native';
+
 import Logo from '../components/Logo.js';
 import SignupForm from '../components/SignupForm.js';
 import * as RootNavigation from "../../RootNavigation";

@@ -1,3 +1,4 @@
+import Icon from 'react-native-vector-icons/FontAwesome';
 import Home from "../pages/Home";
 import SearchLayout from "./SearchLayout";
 import LocationDetector from "./LocationDetector";
@@ -14,10 +15,10 @@ const SearchCategoriesStack = createStackNavigator();
 const ProfileStack = createStackNavigator();
 const MyBookingStack = createStackNavigator();
 const HelpDeskStack = createStackNavigator();
-
+  
 export const HomeStackScreen =(props) =>(
-    <HomeStack.Navigator>
-        <HomeStack.Screen  name="Home" component={() => <Home userData={props.userData}/>}
+    <HomeStack.Navigator  initialRouteName="Home" >
+        <HomeStack.Screen name="Home" component={() => <Home userData={props.userData} userAddress={props.userAddress} />}
                            options={{
                                title: '',
                                headerLeft: null,
@@ -40,8 +41,8 @@ export const HomeStackScreen =(props) =>(
 
                            }}
         />
-        <HomeStack.Screen  name="LocationDetector" component={LocationDetector}
-                           options={{
+        <HomeStack.Screen name="LocationDetector" component={() => <LocationDetector updateUserData={props.updateUserData()} /> }
+                                  options={{
                                title: 'Location',
                                headerTitleAlign: 'center',
                                headerStyle: {
@@ -74,8 +75,8 @@ export const HomeStackScreen =(props) =>(
 
 
 export const SearchCategoriesStackScreen =(props) =>(
-    <SearchCategoriesStack.Navigator>
-        <SearchCategoriesStack.Screen  name="SearchCategories" component={() =><SearchCategories  userData={props.userData}/>}
+    <SearchCategoriesStack.Navigator initialRouteName="SearchCategories">
+        <SearchCategoriesStack.Screen name="SearchCategories" component={() => <SearchCategories userData={props.userData} userAddress={props.userAddress} />}
                                        options={{
                                            title: 'Search Categories',
                                            headerTitleAlign: 'center',
@@ -108,13 +109,18 @@ export const SearchCategoriesStackScreen =(props) =>(
 
 export const ProfileStackScreen =(props) =>(
     <ProfileStack.Navigator>
-        <ProfileStack.Screen  name="Setting" component={() =><Profile userData={props.userData}/>}
+        <ProfileStack.Screen name="Setting" component={() => <Profile userData={props.userData}  onLoginStateChange={props.onLoginStateChange()} />}
                               options={{
                                   title: 'Setting',
                                   headerTitleAlign: 'center',
                                   headerStyle: {
                                       backgroundColor: '#1ba5d8',
                                   },
+                                 /* headerRight: () => (
+                                      <Icon name="power-off" style={{marginHorizontal:15}} size={20} color="#ffffff"  
+                                          onPress={() => this.logOut()}
+                                      />
+                                  ),*/
                               }}
         />
     </ProfileStack.Navigator>

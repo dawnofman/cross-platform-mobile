@@ -8,16 +8,18 @@ export default class SearchForm extends React.Component {
         super(props);
         this.state = {
             userId: null,
-            address:null
+            address: null,
+            updateAddress: null
         }
     }
     componentWillMount() {
-        const { userId,address } = this.props.state;
-        this.setState({ userId: userId, address: address });
+        const { userId, address, updateAddress } = this.props.state;
+        const { userAddress} = this.props;
+        this.setState({ userId: userId, address: userAddress });
     }
     render() {
         const { userId, address } = this.state;
-        console.log("Form---"+userId+"---"+address);
+        console.log("Form---" + userId + "---" + address);
         return (
             <TouchableOpacity style={styles.touchSearch} onPress={() => RootNavigation.navigate('SearchLayout', { userId: userId, address: address })}>
                 <View style={styles.searchSection}>
